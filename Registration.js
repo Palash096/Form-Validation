@@ -1,20 +1,25 @@
+// start storing values from registration form into varaibles.
 const form = document.getElementById('form');
 const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
-const confirm_password = document.getElementById('confirm_password');
-const gender = document.getElementById('gender');
+const password2 = document.getElementById('confirm-password');
 
-form.addEventListener('submit', e =>{
-    e.preventDefault();
-    validateInputs();
+// attaching eventListner to form element
+form.addEventListener('submit', e => {
+    e.preventDefault(); // prevent the page from loading unless and until all the validations are matched
+
+    validateForm(); 
 });
 
+// Display Error message
 const setError = (element, message) => {
+    // This part will select the element where we have to display the error msg
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
-
     errorDisplay.innerText = message;
+
+    // This part will refer to the css file and make the border of the input text red
     inputControl.classList.add('error');
     inputControl.classList.remove('success');
 }
@@ -23,51 +28,53 @@ const setSuccess = element => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
 
-    errorDisplay.innerText = '';
     inputControl.classList.add('success');
     inputControl.classList.remove('error');
 }
 
+// email validation
+// regex means regular expression
 const isValid = email => {
-    const regEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return regEmail.test(String(email).toLowerCase());
+    const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regexEmail.test(String(email).toLowerCase());
 }
 
+// validation logic
+const validateForm = () => {
+    // trim all the white spaces
+    const userData = username.value.trim();
+    const emailData = email.value.trim();
+    const passwordData = password.value.trim();
+    const confirm_passwordData = password2.value.trim();
 
-const validateInputs = () => {
-    const usernameValue = username.value.trim();
-    const emailValue = email.value.trim();
-    const passwordValue = password.value.trim();
-    const confirm_passwordValue = confirm_password.value.trim();
-
-    if(usernameValue === ''){
-        setError(username, "Username is required");
+    if(userData === ''){
+        setError(username, "Username field is Empty");
     } else {
         setSuccess(username);
     }
 
-    if(emailValue === ''){
-        setError(email, "Email is required");
-    } else if(!isValid(emailValue)) {
-        setError(email, "Provide a valid email format");
+    if(emailData === ''){
+        setError(email, "Email field is Empty");
+    } else if(!isValid(emailData)) {
+        setError(email, "Provide Valid Email!");
     } else {
         setSuccess(email);
     }
 
-    if(passwordValue === ''){
-        setError(password, "Password is required");
-    } else if(passwordValue.length < 8){
-        setError(password, "Password must be less than 8 characters.");
+    if(passwordData === ''){
+        setError(password, "Password field is Empty");
+    } else if(passwordData.length < 8) {
+        setError(password, "Password must be greater thatn 8 Characters");
     } else {
         setSuccess(password);
     }
 
-    if(confirm_passwordValue === ''){
-        setError(confirm_password, "Please confirm your Password");
-    } else if(confirm_passwordValue !== passwordValue){
-        setError(confirm_password, "Password dosn't matched!");
+    if(confirm_passwordData === ''){
+        setError(password2, "Password field is Empty");
+    } else if(confirm_passwordData !== passwordData){
+        setError(password2, "Password doesn't match");
     } else {
-        setSuccess(confirm_password);
+        setSuccess(password2);
     }
-};
+}
 

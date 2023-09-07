@@ -1,72 +1,72 @@
 body {
-    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #17313c, #2d5d6d, #4b8ba7);
+    font-family: 'Poppins', sans-serif;
 }
-.container {
-    width: 50%;
-    margin: 0 auto;
+
+#form{
+    width: 400px;
+    margin: 20vh auto 10vh auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    font-size: 12px;
 }
-.form-group {
-    margin-bottom: 20px;
+
+#form h1 {
+    color: #0f2027;
+    text-align: center;
+}
+
+#btn {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    color: white;
+    background-color: rgb(28, 45, 197);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+#btn:hover{
+ background-color: rgb(100, 45, 211);
+}
+
+.form-item {
     display: flex;
     flex-direction: column;
 }
-label {
-    display: block;
-    font-weight: bold;
-}
-input[type="text"],
-input[type="password"],
-input[type="email"],
-select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-button {
-    background-color: #007BFF;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-button:hover {
-    background-color: #0056b3;
+
+.form-item input {
+    border: 2px solid #190101;
+	border-radius: 4px;
+	display: inline-block;
+	font-size: 12px;
+	padding: 12px;
 }
 
-.form-group input{
-    border: 2px solid #f0f0f0;
-    border-radius: 4px;
-    display: block;
-    font-size: 12px;
-    padding: 10px;
-    width: 100%;
+.form-item div {
+    margin-bottom: 10px;
 }
 
-.form-group input:focus{
+.form-item input:focus {
     outline: 0;
 }
 
-.form-group.success input{
-    border-color: green;
+.form-item.success input {
+    border-color: #09c372;
 }
 
-.form-group.error input{
-    border-color: red;
+.form-item.error input {
+    border-color: #ff3860;
 }
 
-.form-group.error{
-    border-color: red;
-    font-size: 10px;
-    height: 15px;
+.form-item .error {
+    color: #ff3860;
+    font-size: 11px;
+    height: 13px;
 }
-
-
 
 
 
