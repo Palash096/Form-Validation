@@ -30,6 +30,7 @@ const setSuccess = element => {
 
     inputControl.classList.add('success');
     inputControl.classList.remove('error');
+    errorDisplay.innerText = '';
 }
 
 // email validation
